@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intro</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+</head>
+<body>
+	<div class="circle"></div>
+	<div class="content">
+		<div class="logo">
+			<img src="img/rings.png" width="400px" id="rings">
+			<img src="img/point.png" width="45px" id="point">
+		</div>
+		<h1><b>Enterprise</b> Solutions</h1>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			// Entrance
+			var introAnimation = setTimeout(function() {
+				$(".circle").addClass("opened");
+			}, 3000);
+
+			var showLogo = setTimeout(function() {
+				$(".content").css('display','block');
+				$(".content h1").fadeIn(2000);
+			}, 1000);
+
+			// Leaving
+			var hideLogo = setTimeout(function() {
+				$(".logo").addClass("popout");
+				$(".content h1").addClass("fadeOut");
+
+				setTimeout(function() {
+					$(".logo").css('display','none');
+					$(".content h1").css('display','none');
+				}, 1000);
+			}, 3500);
+
+			var closeAnimation = setTimeout(function() {
+				$('.opened').addClass('closing').removeClass('opened');
+			}, 3000);
+		});
+	</script>
+</body>
+</html>

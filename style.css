@@ -1,0 +1,110 @@
+body {
+	width: 100vw;
+	height: 100vh;
+	background: #0F0;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.circle {
+	width: 3000px;
+	height: 3000px;
+	background: #000;
+	border-top-right-radius: 50%;
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;
+	position: absolute;
+	bottom: -2997px;
+	right: -2997px;
+	transition: all 0.4s ease-in-out;
+	animation-name: open;
+    animation-duration: 5s;
+}
+	.circle.opened {
+		bottom: 0px;
+		right: 0px;
+	}
+	.circle.closing {
+		animation-name: close;
+	    animation-duration: 5s;
+	}
+
+.content {
+	display: none;
+	z-index: 10;
+}
+	.content h1 {
+		color: #FFF;
+		font-weight: 300;
+		font-size: 40px;
+		text-align: center;
+		animation: fadein 2s ease;
+	}
+	.content h1.fadeOut {
+		animation: fadeout 1s ease !important;
+	}
+	.content h1 b { font-weight: 500; }
+	.content .logo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		animation: popin 1.5s ease;
+	}
+		.content .logo.popout {
+			animation: popout 1.5s ease !important;
+		}
+
+	.content .logo #rings {
+		transform: rotate(30deg);
+		animation: spin 8s infinite linear;
+	}
+	.content .logo #point {
+		display: flex;
+		position: absolute;
+		align-self: center;
+		transform: rotate(30deg);
+	}
+
+
+/* BG Animation */
+@keyframes open {
+    from { bottom: -2997px; right: -2997px; }
+    to   { bottom: 0px; right: 0px; }
+}
+@keyframes close {
+    from { bottom: 0px; right: 0px; }
+    to   { bottom: -2997px; right: -2997px; }
+}
+
+/* Rings Animation */
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to   {transform:rotate(360deg);}
+}
+
+/* Pop Out Animation */
+@keyframes popin {
+    from {transform:scale(0)}
+    70%  {transform:scale(1.1)}
+    to   {transform:scale(1)}
+}
+@keyframes popout {
+    from {transform:scale(1)}
+    10%  {transform:scale(1.1)}
+    to   {transform:scale(0); display: none;}
+}
+
+/* FadeIn Animation */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fadeout {
+    to 	 { opacity: 0; display: none; }
+    from { opacity: 1; }
+}
